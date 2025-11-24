@@ -9,9 +9,12 @@ class TestBooksCollector:
         collector.add_new_book('Что делать, если ты кот')
         assert len(collector.books_genre) == 5
 
-    def test_add_new_book_unsuccessful_add_two_books(self, collector):
+    def test_add_new_book_unsuccessful_add_long_name_books(self, collector):
         #Проверка на добавление элемента с более чем 41 символом
         collector.add_new_book('Что делать, если ты котttttttttttttttttttttttttttttttttttttttttttttttttttt')
+        assert len(collector.books_genre) == 3
+
+    def test_add_new_book_unsuccessful_add_empty_name_books(self, collector):
         #Проверка на добавление элемента пустым названием
         collector.add_new_book('')
         assert len(collector.books_genre) == 3
